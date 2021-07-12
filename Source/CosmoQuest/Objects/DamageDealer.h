@@ -9,7 +9,7 @@
 /**
  * 
  */
-UCLASS(Blueprintable)
+UCLASS(Blueprintable, BlueprintType)
 class COSMOQUEST_API UDamageDealer : public UObject
 {
 	GENERATED_BODY()
@@ -17,5 +17,5 @@ class COSMOQUEST_API UDamageDealer : public UObject
 public:
 
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "DamageDealer")
-	void ApplyDamage(AActor* Target, float Damage);
+	void ApplyDamage(AActor* DamageTarget, float Damage);
 };

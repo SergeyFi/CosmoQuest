@@ -4,9 +4,9 @@
 #include "DamageDealer.h"
 #include "Components/HealthComponentC.h"
 
-void UDamageDealer::ApplyDamage_Implementation(AActor* Target, float Damage)
+void UDamageDealer::ApplyDamage_Implementation(AActor* DamageTarget, float Damage)
 {
-	UHealthComponentC* HealthComponent = Target->FindComponentByClass<UHealthComponentC>();
+	UHealthComponentC* HealthComponent = DamageTarget->FindComponentByClass<UHealthComponentC>();
 
 	if (HealthComponent)
 	{
