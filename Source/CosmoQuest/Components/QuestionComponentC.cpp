@@ -11,12 +11,14 @@ UQuestionComponentC::UQuestionComponentC()
 	PrimaryComponentTick.bCanEverTick = false;
 }
 
-void UQuestionComponentC::CheckAnswer(const FText& Text)
+bool UQuestionComponentC::CheckAnswer(const FText& Text)
 {
 	if (CurrentQuestion)
 	{
-		CurrentQuestion->CheckAnswer(Text);
+		return CurrentQuestion->CheckAnswer(Text);
 	}
+
+	return false;
 }
 
 

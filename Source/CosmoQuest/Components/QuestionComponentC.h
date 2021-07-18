@@ -19,7 +19,7 @@ public:
 	UQuestionComponentC();
 
 	UFUNCTION(BlueprintCallable, Category = "Question")
-	void CheckAnswer(const FText& Text);
+	bool CheckAnswer(const FText& Text);
 
 protected:
 	// Called when the game starts
