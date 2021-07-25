@@ -23,6 +23,11 @@ void UHealthComponentC::RemoveHealth(float Damage)
 	}
 }
 
+float UHealthComponentC::GetHealth()
+{
+	return Health;
+}
+
 
 // Called when the game starts
 void UHealthComponentC::BeginPlay()

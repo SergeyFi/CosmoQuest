@@ -16,8 +16,11 @@ public:
 	// Sets default values for this component's properties
 	UHealthComponentC();
 
-	UFUNCTION(BlueprintCallable)
+	UFUNCTION(BlueprintCallable, Category = "Health")
 	void RemoveHealth(float Damage);
+
+	UFUNCTION(BlueprintCallable,  Category = "Health")
+	float GetHealth();
 
 protected:
 	// Called when the game starts
