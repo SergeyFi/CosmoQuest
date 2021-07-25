@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
+#include "Engine/DataTable.h"
 #include "Objects/Data/QuestionData.h"
 
 #include "QuestionComponentC.generated.h"
@@ -21,6 +22,9 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Question")
 	bool CheckAnswer(const FText& Text);
 
+	UFUNCTION(BlueprintCallable, Category = "Question")
+	FText GetQuestion();
+
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
@@ -28,10 +32,8 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	UQuestion* CurrentQuestion;
 
-	UPROPERTY(EditDefaultsOnly, Category = "Question")
-	UQuestionData* QuestionData;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
+	UDataTable* QuestionTable;
 
 	void AssignRandomQuestion();
-
-	
 };

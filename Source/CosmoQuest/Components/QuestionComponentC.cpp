@@ -21,6 +21,16 @@ bool UQuestionComponentC::CheckAnswer(const FText& Text)
 	return false;
 }
 
+FText UQuestionComponentC::GetQuestion()
+{
+	if (CurrentQuestion)
+	{
+		return CurrentQuestion->GetQuestion();
+	}
+
+	return FText::FromName("NONE");
+}
+
 
 // Called when the game starts
 void UQuestionComponentC::BeginPlay()
@@ -33,8 +43,18 @@ void UQuestionComponentC::BeginPlay()
 
 void UQuestionComponentC::AssignRandomQuestion()
 {
-	if (QuestionData->Questions.Num() > 0)
+	if (QuestionTable)
 	{
-		CurrentQuestion = QuestionData->Questions[FMath::RandRange(0, QuestionData->Questions.Num() - 1)];
+		auto RowNames = QuestionTable->GetRowNames();
+
+		auto RandomIndex = FMath::RandRange(0, RowNames.Num()-1);
+
+		auto QuestionStruct = QuestionTable->FindRow<FQuestionStruct>(RowNames[RandomIndex], "Cant find row !");
+
+		if (QuestionStruct)
+		{
+			CurrentQuestion = NewObject<UQuestion>(GetOwner());
+			CurrentQuestion->InitQuestionData(*QuestionStruct);
+		}
 	}
 }

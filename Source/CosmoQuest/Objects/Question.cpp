@@ -15,3 +15,13 @@ bool UQuestion::CheckAnswer_Implementation(const FText& AnswerText)
 
 	return false;
 }
+
+void UQuestion::InitQuestionData(FQuestionStruct Question)
+{
+	QuestionData = Question;
+}
+
+FText UQuestion::GetQuestion()
+{
+	return QuestionData.Question;
+}

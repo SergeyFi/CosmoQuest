@@ -31,8 +31,13 @@ class COSMOQUEST_API UQuestion : public UObject
 
 public:
 
+	void InitQuestionData(FQuestionStruct Question);
+
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Question")
 	bool CheckAnswer(const FText& AnswerText);
+
+	UFUNCTION(BlueprintCallable, Category = "Question")
+	FText GetQuestion();
 
 	FQuestionStruct QuestionData;
 };
