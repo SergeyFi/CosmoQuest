@@ -3,11 +3,12 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Engine/DataTable.h"
 #include "UObject/NoExportTypes.h"
 #include "Question.generated.h"
 
 USTRUCT(BlueprintType)
-struct FQuestionStruct
+struct FQuestionStruct : public FTableRowBase
 {
 	GENERATED_BODY()
 
