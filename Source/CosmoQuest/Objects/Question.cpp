@@ -3,12 +3,15 @@
 
 #include "Objects/Question.h"
 
-bool UQuestion::CheckAnswer(const FText& AnswerText)
+bool UQuestion::CheckAnswer_Implementation(const FText& AnswerText)
 {
-	return  CheckAnswerImplementable(AnswerText);
-}
+	for (auto Answer : QuestionData.Answers)
+	{
+		if (Answer.EqualTo(AnswerText))
+		{
+			return true;
+		}
+	}
 
-bool UQuestion::CheckAnswerImplementable_Implementation(const FText& AnswerText)
-{
-	return AnswerText.EqualTo(TextAnswer);
+	return false;
 }

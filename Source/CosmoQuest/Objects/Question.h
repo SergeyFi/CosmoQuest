@@ -6,6 +6,18 @@
 #include "UObject/NoExportTypes.h"
 #include "Question.generated.h"
 
+USTRUCT(BlueprintType)
+struct FQuestionStruct
+{
+	GENERATED_BODY()
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Question")
+	FText Question;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Question")
+	TArray<FText> Answers;
+};
+
 /**
  * 
  */
@@ -16,17 +28,8 @@ class COSMOQUEST_API UQuestion : public UObject
 
 public:
 
-	UFUNCTION(BlueprintCallable, Category = "Question")
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Question")
 	bool CheckAnswer(const FText& AnswerText);
 
-protected:
-
-	UFUNCTION(BlueprintNativeEvent)
-	bool CheckAnswerImplementable(const FText& AnswerText);
-
-	UPROPERTY(EditDefaultsOnly, Category = "Question")
-	FText QuestionText;
-
-	UPROPERTY(EditDefaultsOnly, Category = "Question")
-	FText TextAnswer;
+	FQuestionStruct QuestionData;
 };
