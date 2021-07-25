@@ -16,6 +16,9 @@ struct FQuestionStruct
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Question")
 	TArray<FText> Answers;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Question")
+	int32 Difficulty;
 };
 
 /**
