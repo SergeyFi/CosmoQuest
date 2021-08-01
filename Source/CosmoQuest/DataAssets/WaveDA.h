@@ -7,7 +7,7 @@
 #include "Engine/DataTable.h"
 #include "WaveDA.generated.h"
 
-USTRUCT()
+USTRUCT(BlueprintType)
 struct FWave
 {
 	GENERATED_BODY()
@@ -22,7 +22,7 @@ struct FWave
 	UDataTable* QuestionTable;
 };
 
-UCLASS()
+UCLASS( ClassGroup=(Custom), meta=(IsBlueprintBase = "true") )
 class COSMOQUEST_API UWaveDA : public UDataAsset
 {
 	GENERATED_BODY()
