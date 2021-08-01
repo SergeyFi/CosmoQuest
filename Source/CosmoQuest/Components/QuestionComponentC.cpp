@@ -31,14 +31,9 @@ FText UQuestionComponentC::GetQuestion()
 	return FText::FromName("NONE");
 }
 
-
-// Called when the game starts
-void UQuestionComponentC::BeginPlay()
+void UQuestionComponentC::SetQuestionTable(UDataTable* Table)
 {
-	Super::BeginPlay();
-
-	AssignRandomQuestion();
-	
+	QuestionTable = Table;
 }
 
 void UQuestionComponentC::AssignRandomQuestion()
