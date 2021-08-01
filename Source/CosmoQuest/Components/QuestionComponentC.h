@@ -5,10 +5,8 @@
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
 #include "Engine/DataTable.h"
-#include "Objects/Data/QuestionData.h"
-
+#include "Objects/Question.h"
 #include "QuestionComponentC.generated.h"
-
 
 UCLASS( ClassGroup=(Custom), meta=(IsBlueprintBase = "true") )
 class COSMOQUEST_API UQuestionComponentC : public UActorComponent
