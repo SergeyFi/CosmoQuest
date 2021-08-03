@@ -4,9 +4,25 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "Engine/DataTable.h"
 #include "WaveManager.generated.h"
 
-UCLASS()
+USTRUCT(BlueprintType)
+struct FWave: public FTableRowBase
+{
+	GENERATED_BODY()
+
+	UPROPERTY(EditAnywhere)
+	int32 ShipsCount;
+
+	UPROPERTY(EditAnywhere)
+	TArray<TSubclassOf<AActor>> ShipsClasses;
+
+	UPROPERTY(EditAnywhere)
+	UDataTable* QuestionTable;
+};
+
+UCLASS( ClassGroup=(Custom), meta=(IsBlueprintBase = "true") )
 class COSMOQUEST_API AWaveManager : public AActor
 {
 	GENERATED_BODY()
@@ -19,8 +35,16 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
+	// UPROPERTY(EditAnywhere)
+	// UWaveDA* WavesDataAsset;
+
+	UPROPERTY(EditAnywhere)
+	float PauseBetweenWaves = 5.0f;
+
+	UPROPERTY(EditAnywhere)
+	float PauseBetweenSpawnMax = 6.0f;
+
+	UPROPERTY(EditAnywhere)
+	float PauseBetweenSpawnMin = 3.0f;
 
 };
