@@ -20,7 +20,7 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Question")
 	bool CheckAnswer(const FText& Text);
 
-	UFUNCTION(BlueprintCallable, Category = "Question")
+	UFUNCTION(BlueprintPure, Category = "Question")
 	FText GetQuestion();
 
 	void SetQuestionTable(UDataTable* Table);
