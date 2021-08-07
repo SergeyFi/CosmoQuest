@@ -15,7 +15,11 @@ bool UQuestionComponentC::CheckAnswer(const FText& Text)
 {
 	if (CurrentQuestion)
 	{
-		return CurrentQuestion->CheckAnswer(Text);
+		bool bQuestionCheck = CurrentQuestion->CheckAnswer(Text);
+
+		AnswerCheckReaction(bQuestionCheck);
+		
+		return bQuestionCheck;
 	}
 
 	return false;

@@ -29,6 +29,9 @@ public:
 
 protected:
 
+	UFUNCTION(BlueprintImplementableEvent)
+	void AnswerCheckReaction(bool bQuestionCheck);
+
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 	UQuestion* CurrentQuestion;
 
