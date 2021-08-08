@@ -15,12 +15,16 @@ UShipMovementComponentC::UShipMovementComponentC()
 
 void UShipMovementComponentC::StartMovement()
 {
-	SetComponentTickEnabled(true);
+	StartTick();
+
+	bForwardMovement = true;
 }
 
 void UShipMovementComponentC::StopMovement()
 {
-	SetComponentTickEnabled(false);
+	StopTick();
+
+	bForwardMovement = false;
 }
 
 
@@ -28,9 +32,26 @@ void UShipMovementComponentC::StopMovement()
 void UShipMovementComponentC::BeginPlay()
 {
 	Super::BeginPlay();
+}
 
-	// ...
-	
+void UShipMovementComponentC::StartTick()
+{
+	SetComponentTickEnabled(true);
+}
+
+void UShipMovementComponentC::StopTick()
+{
+	SetComponentTickEnabled(false);
+
+	Time = 0.0f;
+}
+
+void UShipMovementComponentC::ForwardMovement(float DeltaTime)
+{
+	if (bForwardMovement)
+	{
+		GetOwner()->AddActorLocalOffset(GetOwner()->GetActorForwardVector() * ShipSpeedCurve->GetFloatValue(Time) * DeltaTime);
+	}
 }
 
 
@@ -41,6 +62,6 @@ void UShipMovementComponentC::TickComponent(float DeltaTime, ELevelTick TickType
 
 	Time += DeltaTime;
 
-	GetOwner()->AddActorLocalOffset(GetOwner()->GetActorForwardVector() * ShipSpeedCurve->GetFloatValue(Time) * DeltaTime);
+	ForwardMovement(DeltaTime);
 }
 

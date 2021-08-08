@@ -35,4 +35,12 @@ protected:
 private:
 
 	float Time;
+
+	void StartTick();
+
+	void StopTick();
+
+	void ForwardMovement(float DeltaTime);
+
+	bool bForwardMovement;
 };
