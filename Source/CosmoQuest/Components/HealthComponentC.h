@@ -19,8 +19,11 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Health")
 	void RemoveHealth(float Damage);
 
-	UFUNCTION(BlueprintCallable,  Category = "Health")
+	UFUNCTION(BlueprintPure,  Category = "Health")
 	float GetHealth();
+
+	UFUNCTION(BlueprintPure,  Category = "Health")
+	float GetMaxHealth();
 
 protected:
 	// Called when the game starts
@@ -28,6 +31,9 @@ protected:
 
 	UPROPERTY(EditDefaultsOnly)
 	float Health = 100.0f;
+
+	UPROPERTY(EditDefaultsOnly)
+	float MaxHealth = 100.0f;
 
 public:	
 	// Called every frame

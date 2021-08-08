@@ -28,6 +28,11 @@ float UHealthComponentC::GetHealth()
 	return Health;
 }
 
+float UHealthComponentC::GetMaxHealth()
+{
+	return MaxHealth;
+}
+
 
 // Called when the game starts
 void UHealthComponentC::BeginPlay()
