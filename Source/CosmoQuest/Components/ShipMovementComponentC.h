@@ -20,27 +20,44 @@ public:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 	UFUNCTION(BlueprintCallable)
-	void StartMovement();
+	void StopMovement();
 
 	UFUNCTION(BlueprintCallable)
-	void StopMovement();
+	void StopRotation();
+
+	UFUNCTION(BlueprintCallable)
+	void SetMovementDirection(FVector Direction, UCurveFloat* SpeedCurve);
+
+	UFUNCTION(BlueprintCallable)
+	void RotateToRotator(FRotator Rotation);
+
+	UFUNCTION(BlueprintCallable)
+	void RotateToActor(AActor* Target);
+	
+	UFUNCTION(BlueprintPure)
+	bool IsRotating();
 
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
 
 	UPROPERTY(EditDefaultsOnly)
-	UCurveFloat* ShipSpeedCurve;
+	float RotationSpeed;
 
 private:
 
-	float Time;
+	float MovementTime;
 
 	void StartTick();
 
 	void StopTick();
 
-	void ForwardMovement(float DeltaTime);
+	FVector MovementVector;
 
-	bool bForwardMovement;
+	FRotator TargetRotation;
+
+	UPROPERTY()
+	UCurveFloat* ShipSpeedCurve;
+
+	bool bRotate;
 };
